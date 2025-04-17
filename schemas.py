@@ -1,7 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
+from typing import Optional
 
 class TeacherCreate(BaseModel):
     name: str
+    email: Optional[EmailStr] = None
+    hashed_password: Optional[str]= None
 
 class ClassCreate(BaseModel):
     name: str 
