@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import SessionLocal
+from database import SessionLocal, get_db
+import models, schemas
 from models import SchoolSettings
 
 router = APIRouter(prefix="/settings", tags=["Settings"])
