@@ -42,3 +42,14 @@ class SchoolSettings(SchoolSettingsBase):
     class Config:
         orm_mode = True
 
+class AssignmentCreate(BaseModel):
+    teacher_id: int
+    subject_id: int
+    class_id: int
+
+class AssignmentOut(AssignmentCreate):
+    id: int
+
+    class Config:
+        from_attribute = True
+

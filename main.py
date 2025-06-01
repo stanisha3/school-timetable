@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from database import engine, create_tables
 from base import Base  
 from models import Teacher, Class, Subject, Timetable  
-from routers import teachers, timetable, subjects 
+from routers import teachers, timetable, subjects, assignments 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -18,6 +18,7 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(teachers.router)
 app.include_router(subjects.router)
 app.include_router(timetable.router)
+app.include_router(assignments.router)
 
 @app.get("/")
 def root():
