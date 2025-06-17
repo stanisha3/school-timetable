@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional
+from typing import Optional, List
 
 class TeacherCreate(BaseModel):
     name: str
@@ -53,3 +53,24 @@ class AssignmentOut(AssignmentCreate):
     class Config:
         from_attribute = True
 
+class TeacherOut(BaseModel):
+    id: int
+    name: str
+    email: Optional[EmailStr] = None
+    hashed_password: Optional[str] = None
+
+    class Config:
+        from_attributes = True
+
+class UserCreate(BaseModel):
+    name: str
+    email: EmailStr
+    password: str
+
+class UserOut(BaseModel):
+    id: int
+    name: str
+    email: EmailStr
+
+    class Config:
+        orm_mode = True
